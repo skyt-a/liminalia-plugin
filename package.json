@@ -1,0 +1,22 @@
+{
+  "name": "liminalia-plugin",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "plugins/*"
+  ],
+  "scripts": {
+    "build": "node scripts/release.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@liminalia/sdk": "0.9.2",
+    "@types/http-proxy": "^1.17.17",
+    "@types/node": "^22.10.0",
+    "@types/qrcode": "^1.5.6",
+    "esbuild": "^0.28.1",
+    "typescript": "^5.9.3",
+    "vitest": "4.1.12"
+  }
+}

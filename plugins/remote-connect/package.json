@@ -1,0 +1,11 @@
+{
+  "name": "liminalia-remote-connect",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Access を使う任意の Studio 外部接続プラグイン",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": { "api": 8 },
+  "exports": { "./studio": "./src/studio.ts", "./studio-server": "./src/studio-server.ts" },
+  "dependencies": { "http-proxy": "^1.18.1", "qrcode": "^1.5.4" }
+}
