@@ -7,7 +7,8 @@ import { AiError, type AiClient, type RawModel, type TurnHandle } from "./client
 import { CodexClient } from "./codex.ts";
 import { checkExpansion, checkProofread, extractLim, isText, lineKind, lintProposal, safeJson, withoutFence } from "./lim.ts";
 import { akairePrompt, buildContext, commandGuide, CONSISTENCY_SCHEMA, DEVELOPER_INSTRUCTIONS, makePrompt, type CommandInfo, type Context, type ProjectPaths } from "./prompt.ts";
-import { PROVIDERS, providerById, resolveBinary, spawnEnvironment } from "./providers.ts";
+import { ENGINE_PREFIX, EngineAgentClient, type EngineAgents } from "./engine.ts";
+import { PROVIDERS, providerById, resolveBinary, spawnEnvironment, type Provider } from "./providers.ts";
 
 /** 一回の相談の上限（案と、その自己点検を合わせて）。 */
 export const RUN_TIMEOUT = 5 * 60 * 1000;
@@ -67,6 +68,10 @@ export interface EngineTools {
 export class AiService {
   /** エンジンの口（studio-server.ts が渡す）。 */
   engine: EngineTools = {};
+  /** エンジンの AI のエージェント（ctx.agents。口の版 6 から）。あれば接続先はこれの一覧になる。 */
+  agents: EngineAgents | null = null;
+  /** エンジンのエージェントの一覧（接続先の名前）。 */
+  private engineList: { id: string; label: string }[] = [];
   private client: AiClient | null = null;
   private clientProvider = "";
   private version = "";
@@ -88,6 +93,22 @@ export class AiService {
     private readonly resolve: typeof resolveBinary = resolveBinary,
   ) {}
 
+  /** 接続先（エンジンのエージェントがあればそれ、無ければ自前の Codex と agy）。 */
+  private async providers(): Promise<{ id: string; label: string }[]> {
+    if (!this.agents) return PROVIDERS.map(({ id, label }) => ({ id, label }));
+    try {
+      this.engineList = (await this.agents.list()).map((a) => ({ id: `${ENGINE_PREFIX}${a.id}`, label: a.name }));
+    } catch {
+      this.engineList = [];
+    }
+    return this.engineList;
+  }
+
+  private providerOf(id: string): { id: string; label: string } | null {
+    if (id.startsWith(ENGINE_PREFIX)) return this.agents ? (this.engineList.find((p) => p.id === id) ?? { id, label: id.slice(ENGINE_PREFIX.length) }) : null;
+    return providerById(id);
+  }
+
   settings(): AiSettings {
     const file = join(this.stateDir(), "settings.json");
     let stored: Partial<AiSettings> = {};
@@ -97,7 +118,7 @@ export class AiService {
       // 読めなければ既定
     }
     return {
-      provider: providerById(String(stored.provider)) ? String(stored.provider) : DEFAULT_SETTINGS.provider,
+      provider: this.providerOf(String(stored.provider)) ? String(stored.provider) : this.agents ? `${ENGINE_PREFIX}codex` : DEFAULT_SETTINGS.provider,
       model: String(stored.model ?? ""),
       effort: (REASONING_EFFORTS as readonly string[]).includes(String(stored.effort)) ? (stored.effort as Effort) : DEFAULT_SETTINGS.effort,
       serviceTier: String(stored.serviceTier ?? ""),
@@ -114,6 +135,15 @@ export class AiService {
     if (this.client) {
       await this.client.ensureStarted();
       return this.client;
+    }
+    if (provider.startsWith(ENGINE_PREFIX)) {
+      if (!this.agents) throw new AiError("このエンジンでは使えない接続先です", "NOT_FOUND", 503);
+      const client = new EngineAgentClient(this.agents, provider.slice(ENGINE_PREFIX.length));
+      this.client = client;
+      this.clientProvider = provider;
+      this.binary = "";
+      this.version = "";
+      return client;
     }
     const p = providerById(provider)!;
     const found = this.resolve(p);
@@ -159,12 +189,16 @@ export class AiService {
   }
 
   async status(): Promise<AiStatus> {
-    const s = this.settings();
-    const p = providerById(s.provider)!;
-    const found = this.resolve(p);
+    const providers = await this.providers();
+    let s = this.settings();
+    // エンジンのエージェントで、覚えている接続先がもう無ければ、一覧の最初にする
+    if (s.provider.startsWith(ENGINE_PREFIX) && providers.length > 0 && !providers.some((p) => p.id === s.provider)) s = { ...s, provider: providers[0]!.id, model: "" };
+    const p = this.providerOf(s.provider) ?? providers[0] ?? { id: s.provider, label: s.provider };
+    const engine = p.id.startsWith(ENGINE_PREFIX);
+    const found = engine ? { path: providers.some((x) => x.id === p.id) ? "engine" : "", error: providers.length === 0 ? "使える AI のエージェントが見つかりません。Claude Code、Codex、Antigravity などを入れてログインしてから、接続し直してください。" : "" } : this.resolve(p as Provider);
     const base: AiStatus = {
       provider: { id: p.id, label: p.label },
-      providers: PROVIDERS.map(({ id, label }) => ({ id, label })),
+      providers,
       connected: false,
       available: Boolean(found.path),
       binary: found.path,
@@ -210,7 +244,8 @@ export class AiService {
     this.changing = true;
     try {
       const current = this.settings();
-      const provider = providerById(String(next.provider ?? current.provider));
+      await this.providers();
+      const provider = this.providerOf(String(next.provider ?? current.provider));
       if (!provider) throw new AiError("知らない接続先です", "INVALID", 400);
       const references = Array.isArray(next.references) ? next.references.map(String).filter(Boolean) : current.references;
       // 接続先を変えたときは、まず繋がるかを確かめる（繋がらなくても接続先は覚える）
@@ -324,7 +359,7 @@ export class AiService {
     const to = source.to;
     const deadline = Date.now() + RUN_TIMEOUT;
     const phase = (phase: string, message: string) => emit({ type: "phase", id, phase, message });
-    phase("connecting", `${providerById(s.provider)!.label} に接続しています…`);
+    phase("connecting", `${this.providerOf(s.provider)?.label ?? s.provider} に接続しています…`);
     const client = await this.ensureClient();
     await this.requireLogin(client);
     const models = await this.listModels();

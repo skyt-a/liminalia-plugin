@@ -4,7 +4,8 @@ import { AiError } from "./server/client.ts";
 import { AiService } from "./server/service.ts";
 
 /**
- * AI 相談の開発サーバー側。接続先の CLI（Codex・agy）を起こし、相談と決まった操作を流す。口は ./protocol.ts。
+ * AI 相談の開発サーバー側。エンジンが AI のエージェントの口（ctx.agents）を持っていればそれを使い、無ければ接続先の CLI（Codex・agy）を
+ * 自前で起こす。相談と決まった操作を流す。口は ./protocol.ts。
  * @liminalia/studio は型だけを読む（作品の外に置いても、エンジンを読まずに動くように）。
  */
 let service: AiService | null = null;
@@ -13,6 +14,9 @@ function aiService(ctx: StudioServerContext): AiService {
   service ??= new AiService({ root: ctx.root, paths: ctx.paths }, () => ctx.stateDir());
   // 命令の仕様と検査は、エンジンが口を持っていれば使う（古いエンジンでは無い）
   const engine = ctx as Partial<Pick<StudioServerContext, "commands" | "check">>;
+  // AI のエージェントは、エンジンが口を持っていれば（口の版 6 から）それを使う。無ければ自前で Codex と agy を起こす
+  const agents = (ctx as { agents?: unknown }).agents;
+  service.agents = agents && typeof agents === "object" ? (agents as AiService["agents"]) : null;
   service.engine = {
     ...(typeof engine.commands === "function" ? { commands: () => engine.commands!.call(ctx) } : {}),
     ...(typeof engine.check === "function" ? { check: (file: string, text: string) => engine.check!.call(ctx, file, text) } : {}),

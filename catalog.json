@@ -4,8 +4,8 @@
       "id": "ai",
       "name": "AI 相談",
       "nameEn": "AI consultation",
-      "description": "シナリオ執筆のタブに「AI 相談」の欄を足します。続きの提案、表現の推敲、整合性チェックなどを、このコンピューターの Codex か Gemini（agy）に頼みます（それぞれの CLI を入れてログインしておく必要があります）",
-      "descriptionEn": "Adds an \"AI consultation\" pane to the Scenario tab. Ask Codex or Gemini (agy) on this computer to suggest what comes next, polish wording, check consistency and more (install and sign in to their CLIs first)"
+      "description": "シナリオ執筆のタブに「AI 相談」の欄を足します。続きの提案、表現の推敲、整合性チェックなどを、このコンピューターの AI のエージェント（Claude Code、Codex、Antigravity など）に頼みます（それぞれを入れてログインしておく必要があります）",
+      "descriptionEn": "Adds an \"AI consultation\" pane to the Scenario tab. Ask the AI agents on this computer (Claude Code, Codex, Antigravity and more) to suggest what comes next, polish wording, check consistency and more (install and sign in to them first)"
     },
     {
       "id": "live2d",

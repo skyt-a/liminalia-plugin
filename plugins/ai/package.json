@@ -1,9 +1,9 @@
 {
   "name": "liminalia-ai",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
-  "description": "Liminalia Studio のシナリオ執筆のタブに、AI 相談の欄を足すプラグイン（Codex・Gemini（agy）。LIMINAL Forge の AI 相談を移したもの）",
+  "description": "Liminalia Studio のシナリオ執筆のタブに、AI 相談の欄を足すプラグイン（エンジンの AI のエージェント。古いエンジンでは Codex・Gemini（agy）を自前で起こす）",
   "exports": {
     "./studio": "./src/studio.ts",
     "./studio-server": "./src/studio-server.ts"

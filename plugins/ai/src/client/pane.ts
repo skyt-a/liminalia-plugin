@@ -106,7 +106,7 @@ export function mountPane(el: HTMLElement, ctx: StudioContext): StudioViewInstan
     const s = c.status;
     statusLine.replaceChildren(
       h("span", { class: `lai-dot ${s?.connected ? "on" : c.status || c.statusError ? "off" : ""}` }),
-      h("span", { class: "lai-status-text" }, !s ? (c.statusError ? `繋がりません: ${c.statusError}` : "接続を確かめています…") : s.connected ? `${s.provider.label}・${s.models.find((m) => m.id === s.model)?.displayName ?? s.model}・${EFFORT_NAMES[s.effort] ?? s.effort}` : `${s.provider.label}: ${s.error || "繋がっていません"}`),
+      h("span", { class: "lai-status-text" }, !s ? (c.statusError ? `繋がりません: ${c.statusError}` : "接続を確かめています…") : s.connected ? [s.provider.label, s.models.find((m) => m.id === s.model)?.displayName ?? s.model, s.models.find((m) => m.id === s.model)?.supportedReasoningEfforts.length ? (EFFORT_NAMES[s.effort] ?? s.effort) : ""].filter(Boolean).join("・") : `${s.provider.label}: ${s.error || "繋がっていません"}`),
       h("button", { type: "button", class: "ghost", title: "接続し直す", onclick: () => void c.refreshStatus() }, "↻"),
       h("button", { type: "button", class: "ghost", title: "接続先・モデル・資料", onclick: () => toggleSettings() }, "設定"),
     );
@@ -134,8 +134,11 @@ export function mountPane(el: HTMLElement, ctx: StudioContext): StudioViewInstan
     };
     const fill = () => {
       const m = models().find((x) => x.id === model.value) ?? models().find((x) => x.isDefault);
-      const list = m?.supportedReasoningEfforts.length ? m.supportedReasoningEfforts : ["low", "medium", "high"];
-      effort.replaceChildren(...list.map((e) => h("option", { value: e, ...(e === s.effort ? { selected: true } : {}) }, EFFORT_NAMES[e] ?? e)));
+      // エンジンのエージェントで深さを選べないもの（深さがモデルに入っている Antigravity など）は、選ばせない
+      const engine = provider.value.startsWith("engine:");
+      const list = m?.supportedReasoningEfforts.length ? m.supportedReasoningEfforts : engine ? [] : ["low", "medium", "high"];
+      effort.replaceChildren(...(list.length > 0 ? list.map((e) => h("option", { value: e, ...(e === s.effort ? { selected: true } : {}) }, EFFORT_NAMES[e] ?? e)) : [h("option", { value: s.effort }, "モデルの既定")]));
+      effort.disabled = list.length === 0;
       tier.replaceChildren(h("option", { value: "" }, "ふつう"), ...(m?.serviceTiers ?? []).map((t) => h("option", { value: t.id, ...(t.id === s.serviceTier ? { selected: true } : {}) }, t.name)));
       tier.disabled = !m?.serviceTiers.length;
     };
