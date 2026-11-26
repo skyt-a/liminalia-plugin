@@ -7,7 +7,7 @@ const root = resolve(import.meta.dirname, "..");
 const out = join(root, "dist");
 const release = process.argv[2];
 if (!/^v\d+\.\d+\.\d+$/.test(release ?? "")) throw new Error("Usage: npm run build -- v0.1.0");
-const entries = ["commands", "web", "import", "studio", "studio-server"];
+const entries = ["commands", "web", "import", "studio", "studio-server", "cli", "build"];
 const json = (path) => JSON.parse(readFileSync(path, "utf8"));
 const encode = (data) => Buffer.from(JSON.stringify(data) + "\n");
 const file = (path, data = readFileSync(join(root, path))) => ({ path, base64: Buffer.from(data).toString("base64") });

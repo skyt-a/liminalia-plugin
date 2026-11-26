@@ -1,0 +1,18 @@
+{
+  "name": "liminalia-debug-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Studio の「変数」一覧画面とブレークポイント・ステップ実行を有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "studio:variables",
+      "studio:breakpoints"
+    ]
+  },
+  "exports": {
+    "./studio": "./src/studio.ts"
+  }
+}

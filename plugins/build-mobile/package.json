@@ -1,0 +1,20 @@
+{
+  "name": "liminalia-build-mobile",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Android（APK・AAB）と iOS（実機・Archive・App Store Connect）の書き出しを有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "cli:build-mobile",
+      "build:android",
+      "build:ios"
+    ]
+  },
+  "exports": {
+    "./cli": "./src/cli.ts",
+    "./build": "./src/build.ts"
+  }
+}

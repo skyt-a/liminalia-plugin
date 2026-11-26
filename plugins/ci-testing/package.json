@@ -1,0 +1,20 @@
+{
+  "name": "liminalia-ci-testing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "自動テスト（lim test）、到達探索（lim reach）、自動通しプレイ（lim playtest）、クラッシュ解析（lim crash）を有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "cli:test",
+      "cli:reach",
+      "cli:playtest",
+      "cli:crash"
+    ]
+  },
+  "exports": {
+    "./cli": "./src/cli.ts"
+  }
+}

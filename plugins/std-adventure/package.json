@@ -1,0 +1,21 @@
+{
+  "name": "liminalia-std-adventure",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "探索パート（@investigate）、マップ選択（@map-choice）、図鑑（@codex）、常設 HUD（@hud-button / @hud-text）を有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "std:investigate",
+      "std:map-choice",
+      "std:codex",
+      "std:hud"
+    ]
+  },
+  "exports": {
+    "./commands": "./src/commands.ts",
+    "./web": "./src/web.ts"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "liminalia-publish-stores",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Steam・itch.io 公開、追加パック、差分パッチ、自動更新マニフェストと署名鍵生成を有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "cli:publish",
+      "cli:pack",
+      "cli:patch",
+      "cli:update-manifest",
+      "cli:update-key",
+      "build:stores"
+    ]
+  },
+  "exports": {
+    "./cli": "./src/cli.ts",
+    "./build": "./src/build.ts"
+  }
+}

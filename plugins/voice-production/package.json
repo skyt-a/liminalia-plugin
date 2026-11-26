@@ -1,0 +1,20 @@
+{
+  "name": "liminalia-voice-production",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Studio の「ボイス」管理画面と、収録用 CSV 台本・ボイス番号固定（lim voice-script / lim voice-lock）を有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "studio:voices",
+      "cli:voice-script",
+      "cli:voice-lock"
+    ]
+  },
+  "exports": {
+    "./studio": "./src/studio.ts",
+    "./cli": "./src/cli.ts"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "liminalia-psd-import",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "PSD / PSB のレイヤー構造からパーツ合成立ち絵を取り込む（lim psd）公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "cli:psd"
+    ]
+  },
+  "exports": {
+    "./cli": "./src/cli.ts"
+  }
+}

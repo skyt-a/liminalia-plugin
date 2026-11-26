@@ -1,0 +1,22 @@
+{
+  "name": "liminalia-std-cinematic",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "スタッフロール、章タイトルカード、キーフレームアニメーション、レイヤーカメラ、立ち絵移動・揺れを有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "std:staff-roll",
+      "std:chapter",
+      "std:keyframe",
+      "std:layer-camera",
+      "std:chara-motion"
+    ]
+  },
+  "exports": {
+    "./commands": "./src/commands.ts",
+    "./web": "./src/web.ts"
+  }
+}

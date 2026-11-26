@@ -1,0 +1,20 @@
+{
+  "name": "liminalia-std-ui-modes",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "チャット風会話表示、HTML 埋め込み、レイヤー文字、モーションテキストを有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "std:chat",
+      "std:html",
+      "std:layer-text"
+    ]
+  },
+  "exports": {
+    "./commands": "./src/commands.ts",
+    "./web": "./src/web.ts"
+  }
+}

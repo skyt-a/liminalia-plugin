@@ -1,0 +1,19 @@
+{
+  "name": "liminalia-i18n-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Studio の翻訳タブ・プレビュー言語切替と、多言語管理コマンド（lim i18n）を有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "studio:i18n",
+      "cli:i18n"
+    ]
+  },
+  "exports": {
+    "./studio": "./src/studio.ts",
+    "./cli": "./src/cli.ts"
+  }
+}

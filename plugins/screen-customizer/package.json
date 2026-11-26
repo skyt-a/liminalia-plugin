@@ -1,0 +1,19 @@
+{
+  "name": "liminalia-screen-customizer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Studio の「画面パーツと CSS」画面とテンプレート管理コマンド（lim screens）を有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "studio:screens",
+      "cli:screens"
+    ]
+  },
+  "exports": {
+    "./studio": "./src/studio.ts",
+    "./cli": "./src/cli.ts"
+  }
+}

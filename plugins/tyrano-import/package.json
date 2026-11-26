@@ -1,0 +1,20 @@
+{
+  "name": "liminalia-tyrano-import",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "TyranoScript / TyranoBuilder（.ks）からの移行と書き戻し（lim import / lim backport / lim new --from-tyrano）を有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "cli:import",
+      "cli:backport",
+      "studio:import-banner"
+    ]
+  },
+  "exports": {
+    "./cli": "./src/cli.ts",
+    "./studio": "./src/studio.ts"
+  }
+}

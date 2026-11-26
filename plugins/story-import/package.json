@@ -1,0 +1,20 @@
+{
+  "name": "liminalia-story-import",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Ink / Yarn Spinner / Ren'Py / Twine からのシナリオ変換取り込みを有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "cli:import-ink",
+      "cli:import-yarn",
+      "cli:import-renpy",
+      "cli:import-twine"
+    ]
+  },
+  "exports": {
+    "./cli": "./src/cli.ts"
+  }
+}

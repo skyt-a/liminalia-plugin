@@ -1,0 +1,17 @@
+{
+  "name": "liminalia-studio-timeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Studio の「タイムライン」画面と「演出の流れ」パネルを有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "studio:timeline"
+    ]
+  },
+  "exports": {
+    "./studio": "./src/studio.ts"
+  }
+}

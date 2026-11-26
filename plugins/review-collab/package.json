@@ -1,0 +1,20 @@
+{
+  "name": "liminalia-review-collab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Studio の「コメント」画面と、校正用テキスト抽出・台本書き出し（lim prose / lim script-export）を有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "studio:reviews",
+      "cli:prose",
+      "cli:script-export"
+    ]
+  },
+  "exports": {
+    "./studio": "./src/studio.ts",
+    "./cli": "./src/cli.ts"
+  }
+}

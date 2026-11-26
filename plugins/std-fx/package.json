@@ -1,0 +1,23 @@
+{
+  "name": "liminalia-std-fx",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ライティング、パーティクル、集中線・擬音、漫符、画面効果シェーダー、パラパラ漫画を有効化する公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "std:lighting",
+      "std:particles",
+      "std:manga",
+      "std:emote",
+      "std:effect",
+      "std:flipbook"
+    ]
+  },
+  "exports": {
+    "./commands": "./src/commands.ts",
+    "./web": "./src/web.ts"
+  }
+}

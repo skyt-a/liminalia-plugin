@@ -5,28 +5,225 @@
       "name": "AI 相談",
       "nameEn": "AI consultation",
       "description": "シナリオ執筆のタブに「AI 相談」の欄を足します。続きの提案、表現の推敲、整合性チェックなどを、このコンピューターの AI のエージェント（Claude Code、Codex、Antigravity など）に頼みます（それぞれを入れてログインしておく必要があります）",
-      "descriptionEn": "Adds an \"AI consultation\" pane to the Scenario tab. Ask the AI agents on this computer (Claude Code, Codex, Antigravity and more) to suggest what comes next, polish wording, check consistency and more (install and sign in to them first)"
+      "descriptionEn": "Adds an \"AI consultation\" pane to the Scenario tab. Ask the AI agents on this computer (Claude Code, Codex, Antigravity and more) to suggest what comes next, polish wording, check consistency and more (install and sign in to them first)",
+      "category": "ai",
+      "scope": "tool",
+      "tags": ["AI", "相談", "推敲", "執筆支援", "Claude", "Codex", "Gemini", "consultation", "writing"]
     },
     {
       "id": "live2d",
       "name": "Live2D",
       "nameEn": "Live2D",
       "description": "Live2D Cubism のモデルを立ち絵にします（キャラクターの「立ち絵の動き」）。差分の名前で表情とモーションを替え、口パクとまばたきもします。Cubism Core は入っていないので、Live2D の使用許諾に同意して入手し、assets/others/live2d/ に置いてください",
-      "descriptionEn": "Shows Live2D Cubism models as character sprites (Sprite motion on the Characters tab). Variant names switch expressions and motions, with lip sync and blinking. The Cubism Core isn't included: accept the Live2D license agreements, download it, and put it in assets/others/live2d/"
+      "descriptionEn": "Shows Live2D Cubism models as character sprites (Sprite motion on the Characters tab). Variant names switch expressions and motions, with lip sync and blinking. The Cubism Core isn't included: accept the Live2D license agreements, download it, and put it in assets/others/live2d/",
+      "category": "motion",
+      "scope": "project",
+      "tags": ["Live2D", "Cubism", "立ち絵", "モーション", "口パク", "まばたき", "sprite", "animation"]
     },
     {
       "id": "spine",
       "name": "Spine",
       "nameEn": "Spine",
       "description": "Spine の骨格を立ち絵にします（キャラクターの「立ち絵の動き」）。差分の名前で動きとスキンを替え、口パクとまばたきもします。Spine のランタイムは入っていないので、Spine のライセンスを持つ人が入手し、assets/others/spine/ に置いてください",
-      "descriptionEn": "Shows Spine skeletons as character sprites (Sprite motion on the Characters tab). Variant names switch animations and skins, with lip sync and blinking. The Spine runtime isn't included: a Spine licensee gets it and puts it in assets/others/spine/"
+      "descriptionEn": "Shows Spine skeletons as character sprites (Sprite motion on the Characters tab). Variant names switch animations and skins, with lip sync and blinking. The Spine runtime isn't included: a Spine licensee gets it and puts it in assets/others/spine/",
+      "category": "motion",
+      "scope": "project",
+      "tags": ["Spine", "骨格", "立ち絵", "モーション", "口パク", "まばたき", "sprite", "skeleton"]
     },
     {
       "id": "remote-connect",
       "name": "外出先から接続",
       "nameEn": "Remote connection",
       "description": "Cloudflare Access を使い、外出先から Studio に接続します。Cloudflare Tunnel と cloudflared の設定が必要です。",
-      "descriptionEn": "Connect to Studio remotely using Cloudflare Access. Requires a configured Cloudflare Tunnel and cloudflared."
+      "descriptionEn": "Connect to Studio remotely using Cloudflare Access. Requires a configured Cloudflare Tunnel and cloudflared.",
+      "category": "studio",
+      "scope": "tool",
+      "tags": ["外出先", "スマホ", "リモート", "LAN", "Cloudflare", "Tunnel", "remote", "mobile"]
+    },
+    {
+      "id": "std-adventure",
+      "name": "探索・図鑑・HUD パック",
+      "nameEn": "Adventure, Codex and HUD Pack",
+      "description": "探索パート（クリック調査）、マップ選択、図鑑、常設 HUD ボタン・テキストのコマンドと画面を追加します。推理ゲームや探索ノベル向けです。",
+      "descriptionEn": "Adds commands and screens for point-and-click investigation, map choices, a codex, and persistent HUD buttons and text. Built for mystery and adventure visual novels.",
+      "category": "gameplay",
+      "scope": "project",
+      "tags": ["探索", "調査", "クリック", "マップ", "図鑑", "HUD", "推理", "アドベンチャー", "investigate", "codex", "map", "adventure"],
+      "commands": ["@investigate", "@investigate-reset", "@map-choice", "@codex", "@codex-unlock", "@hud-button", "@hud-text"]
+    },
+    {
+      "id": "std-fx",
+      "name": "高度演出・漫画エフェクトパック",
+      "nameEn": "Advanced Effects and Manga Pack",
+      "description": "ライティング、パーティクル（雨・雪・桜）、集中線や擬音の漫画演出、漫符、画面効果シェーダー、パラパラ漫画を追加します。",
+      "descriptionEn": "Adds lighting, particles (rain, snow, petals), manga speedlines and bursts, character emotes, screen shader effects, and flipbook animations.",
+      "category": "effects",
+      "scope": "project",
+      "tags": ["演出", "エフェクト", "ライティング", "光", "影", "パーティクル", "雨", "雪", "桜", "集中線", "漫画", "漫符", "シェーダー", "particles", "lighting", "manga", "emote", "shader"],
+      "commands": ["@lighting", "@light", "@shadow", "@reflection", "@particles", "@speedlines", "@burst", "@emote", "@effect", "@flipbook"]
+    },
+    {
+      "id": "std-ui-modes",
+      "name": "チャット風・HTML 表現パック",
+      "nameEn": "Chat UI and HTML Presentation Pack",
+      "description": "メッセージアプリ風のチャット会話画面、任意の HTML 埋め込み、レイヤー文字、動くモーションテキストを追加します。",
+      "descriptionEn": "Adds messenger-style chat screens, custom HTML overlays, layer text, and motion text presentation.",
+      "category": "effects",
+      "scope": "project",
+      "tags": ["チャット", "SNS", "スマホ風", "メッセージアプリ", "HTML", "テキスト演出", "chat", "messenger", "html", "motion-text"],
+      "commands": ["@chat-open", "@chat", "@chat-close", "@html", "@html-hide", "@layer-text", "@motion-text"]
+    },
+    {
+      "id": "std-cinematic",
+      "name": "シネマティック演出パック",
+      "nameEn": "Cinematic Presentation Pack",
+      "description": "スタッフロール、章タイトルカード、キーフレームアニメーション、レイヤーカメラ、背景配置や立ち絵の細かい移動・揺れを追加します。",
+      "descriptionEn": "Adds staff rolls, chapter title cards, keyframe animations, per-layer cameras, background placement, and fine character motion and shake commands.",
+      "category": "effects",
+      "scope": "project",
+      "tags": ["スタッフロール", "エンディング", "章タイトル", "キーフレーム", "カメラ", "演出", "credits", "staff-roll", "chapter", "keyframe", "camera"],
+      "commands": ["@staff-roll", "@chapter-card", "@chapter-end", "@keyframe", "@kanim", "@layer-camera", "@bg-place", "@chara-move", "@chara-shake"]
+    },
+    {
+      "id": "store-commerce",
+      "name": "ストア課金・実績・プレゼンス",
+      "nameEn": "Store Purchases, Achievements and Presence",
+      "description": "アプリ内課金と購入復元、進捗つき実績、Steam や Discord などのプレイ状況表示、アプリ更新チェックの連携補助を追加します。",
+      "descriptionEn": "Enables in-app purchases and restore flows, progress-based achievements, rich presence (Steam/Discord), and update checks.",
+      "category": "publishing",
+      "scope": "project",
+      "tags": ["課金", "ストア", "実績", "トロフィー", "Steam", "Discord", "アップデート", "purchase", "achievements", "presence"],
+      "commands": ["@purchase", "@restore-purchases", "@achieve", "@achieve-progress", "@presence", "@check-update"]
+    },
+    {
+      "id": "tyrano-import",
+      "name": "TyranoScript 移行・書き戻し",
+      "nameEn": "TyranoScript Import and Backport",
+      "description": "TyranoScript や TyranoBuilder のプロジェクト（.ks）を本文照合つきで取り込み、Liminalia 側の修正を .ks へ書き戻します。",
+      "descriptionEn": "Imports TyranoScript / TyranoBuilder (.ks) projects with word-for-word verification and backports edits to .ks.",
+      "category": "import",
+      "scope": "tool",
+      "tags": ["TyranoScript", "TyranoBuilder", "ティラノ", "ks", "移行", "インポート", "書き戻し", "migrate", "backport"],
+      "commands": ["lim import", "lim backport", "lim new --from-tyrano"]
+    },
+    {
+      "id": "story-import",
+      "name": "他ツールシナリオ取り込み",
+      "nameEn": "Ink, Yarn, Ren'Py and Twine Import",
+      "description": "Ink（.ink）、Yarn Spinner（.yarn）、Ren'Py（.rpy）、Twine（.twee）のシナリオを .lim 形式へ変換して取り込みます。",
+      "descriptionEn": "Converts and imports Ink (.ink), Yarn Spinner (.yarn), Ren'Py (.rpy), and Twine (.twee) scripts into .lim.",
+      "category": "import",
+      "scope": "tool",
+      "tags": ["Ink", "Yarn", "Ren'Py", "Twine", "twee", "rpy", "移行", "インポート", "変換", "import"],
+      "commands": ["lim import-ink", "lim import-yarn", "lim import-renpy", "lim import-twine"]
+    },
+    {
+      "id": "psd-import",
+      "name": "PSD 立ち絵パーツ取り込み",
+      "nameEn": "PSD Sprite Layer Import",
+      "description": "PSD・PSB ファイルのレイヤー構造を読み取り、目・口・表情などのパーツ合成立ち絵としてキャラクターへ自動登録します。",
+      "descriptionEn": "Imports PSD/PSB layer structures directly into layered composite character sprites.",
+      "category": "import",
+      "scope": "tool",
+      "tags": ["PSD", "PSB", "Photoshop", "CLIP STUDIO", "立ち絵", "差分", "パーツ合成", "レイヤー", "sprite", "layers"],
+      "commands": ["lim psd"]
+    },
+    {
+      "id": "studio-timeline",
+      "name": "タイムライン編集",
+      "nameEn": "Timeline Editor",
+      "description": "Studio に「タイムライン」画面と「演出の流れ」パネルを有効化し、立ち絵・背景・音の開始タイミングと長さをドラッグで調整します。",
+      "descriptionEn": "Enables the Timeline screen and Flow panel in Studio to adjust timing and duration of sprites, backgrounds, and audio visually.",
+      "category": "studio",
+      "scope": "tool",
+      "tags": ["タイムライン", "演出", "タイミング", "Studio", "動画編集風", "timeline", "timing"]
+    },
+    {
+      "id": "voice-production",
+      "name": "ボイス収録・一括管理",
+      "nameEn": "Voice Production and Script Export",
+      "description": "Studio に「ボイス」管理画面を有効化し、収録用 CSV 台本の書き出しと連番ボイス番号の固定（voice-lock）を行えます。",
+      "descriptionEn": "Enables the Voice management screen in Studio, exports CSV recording scripts, and locks sequential voice IDs.",
+      "category": "studio",
+      "scope": "tool",
+      "tags": ["ボイス", "声優", "収録", "台本", "CSV", "音声", "連番", "voice", "casting", "audio"],
+      "commands": ["lim voice-script", "lim voice-lock"]
+    },
+    {
+      "id": "review-collab",
+      "name": "レビューコメント・校正ツール",
+      "nameEn": "Review Comments and Proofreading",
+      "description": "Studio に「コメント」画面とフィードバック取込を有効化し、校正用の台本書き出しや本文のみの抽出・書き戻しを行えます。",
+      "descriptionEn": "Enables the Reviews screen and tester feedback import in Studio, plus script export and prose extract/apply for editors.",
+      "category": "studio",
+      "scope": "tool",
+      "tags": ["レビュー", "コメント", "チーム", "校正", "推敲", "フィードバック", "台本出力", "review", "proofread", "team"],
+      "commands": ["lim prose", "lim script-export"]
+    },
+    {
+      "id": "screen-customizer",
+      "name": "画面パーツと CSS 編集",
+      "nameEn": "Screen Parts and CSS Customizer",
+      "description": "Studio に「画面パーツと CSS」画面を有効化し、タイトル・セーブ・コンフィグなどのシステム画面を HTML と CSS で直接カスタマイズします。",
+      "descriptionEn": "Enables the Screen parts & CSS editor in Studio and CLI template management to customize system screens directly.",
+      "category": "studio",
+      "scope": "tool",
+      "tags": ["UI", "画面", "CSS", "HTML", "テンプレート", "カスタム", "タイトル画面", "セーブ画面", "screens", "theme"],
+      "commands": ["lim screens", "lim shot --screen"]
+    },
+    {
+      "id": "i18n-toolkit",
+      "name": "多言語翻訳ツールキット",
+      "nameEn": "Localization and Translation Toolkit",
+      "description": "Studio の翻訳タブとプレビュー言語切替を有効化し、CSV や XLIFF での翻訳書き出し・取り込みと翻訳文字数見積もりを行えます。",
+      "descriptionEn": "Enables the Translation tab and preview language switcher in Studio, with CSV/XLIFF export, import, and word-count estimates.",
+      "category": "studio",
+      "scope": "tool",
+      "tags": ["翻訳", "多言語", "ローカライズ", "英語", "中国語", "CSV", "XLIFF", "i18n", "localization", "translate"],
+      "commands": ["lim i18n"]
+    },
+    {
+      "id": "debug-tools",
+      "name": "変数・ブレークポイントデバッガ",
+      "nameEn": "Variables and Breakpoint Debugger",
+      "description": "Studio に「変数」一覧画面、条件付きブレークポイント、ステップ実行、プレビュー中の変数ウォッチと書き換えを有効化します。",
+      "descriptionEn": "Enables the Variables screen, conditional breakpoints, step execution, and live variable watching in Studio.",
+      "category": "studio",
+      "scope": "tool",
+      "tags": ["変数", "フラグ", "デバッグ", "ブレークポイント", "ステップ実行", "variables", "debug", "breakpoints"]
+    },
+    {
+      "id": "ci-testing",
+      "name": "CI 自動テスト・クラッシュ解析",
+      "nameEn": "CI Automated Testing and Crash Analysis",
+      "description": ".limtest 自動テスト、指定行・エンディングへの到達探索、書き出し版の自動通しプレイ、クラッシュログのソースマップ復元を提供します。",
+      "descriptionEn": "Provides .limtest automated tests, reachability search, exported build playtesting, and crash report stack decoding.",
+      "category": "publishing",
+      "scope": "tool",
+      "tags": ["テスト", "CI", "GitHub Actions", "通しプレイ", "クラッシュ", "到達確認", "test", "playtest", "reach", "crash"],
+      "commands": ["lim test", "lim reach", "lim playtest", "lim crash"]
+    },
+    {
+      "id": "publish-stores",
+      "name": "Steam・itch.io 配信とパッチ",
+      "nameEn": "Steam, itch.io Publishing and Patches",
+      "description": "Steam（steamcmd）と itch.io（butler）へのアップロード、追加パック、差分パッチ、デスクトップ自動アップデートと署名鍵生成を提供します。",
+      "descriptionEn": "Uploads builds to Steam and itch.io, builds expansion packs and diff patches, and manages signed desktop auto-updates.",
+      "category": "publishing",
+      "scope": "tool",
+      "tags": ["Steam", "itch.io", "配信", "公開", "ストア", "パッチ", "DLC", "自動更新", "署名", "publish", "patch", "pack"],
+      "commands": ["lim publish", "lim pack", "lim patch", "lim update-manifest", "lim update-key"]
+    },
+    {
+      "id": "build-mobile",
+      "name": "Android・iOS アプリ書き出し",
+      "nameEn": "Android and iOS Mobile Build",
+      "description": "Android（APK・AAB）と iOS（実機テスト・Archive・App Store Connect）向けの書き出しとモバイル実績・プライバシー設定を提供します。",
+      "descriptionEn": "Builds Android (APK/AAB) and iOS (device, Archive, App Store Connect) apps with mobile achievements and privacy manifest support.",
+      "category": "publishing",
+      "scope": "tool",
+      "tags": ["Android", "iOS", "スマホ", "アプリ", "Google Play", "App Store", "mobile", "apk", "aab", "ipa"],
+      "commands": ["lim build android", "lim build ios"]
     }
   ]
 }
