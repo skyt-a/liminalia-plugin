@@ -10,6 +10,7 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "liminalia": {
-    "api": 8
+    "api": 8,
+    "enables": ["studio:ai"]
   }
 }

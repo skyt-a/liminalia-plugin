@@ -4,8 +4,8 @@
       "id": "ai",
       "name": "AI 相談",
       "nameEn": "AI consultation",
-      "description": "シナリオ執筆のタブに「AI 相談」の欄を足します。続きの提案、表現の推敲、整合性チェックなどを、このコンピューターの AI のエージェント（Claude Code、Codex、Antigravity など）に頼みます（それぞれを入れてログインしておく必要があります）",
-      "descriptionEn": "Adds an \"AI consultation\" pane to the Scenario tab. Ask the AI agents on this computer (Claude Code, Codex, Antigravity and more) to suggest what comes next, polish wording, check consistency and more (install and sign in to them first)",
+      "description": "Studio に「AI」タブ（複数エージェントへの並列依頼・差分確認・比較プレイ）とシナリオ画面の「AI 相談」欄を有効化します。このコンピューターの AI エージェント（Claude Code、Codex、Antigravity など）を入れてログインしておきます。",
+      "descriptionEn": "Enables the AI tab (parallel agent tasks, diffs, side-by-side play) and the AI consultation pane in Studio. Install and sign in to local AI agents (Claude Code, Codex, Antigravity, etc.) first.",
       "category": "ai",
       "scope": "tool",
       "tags": ["AI", "相談", "推敲", "執筆支援", "Claude", "Codex", "Gemini", "consultation", "writing"]
@@ -96,26 +96,15 @@
       "commands": ["@purchase", "@restore-purchases", "@achieve", "@achieve-progress", "@presence", "@check-update"]
     },
     {
-      "id": "tyrano-import",
-      "name": "TyranoScript 移行・書き戻し",
-      "nameEn": "TyranoScript Import and Backport",
-      "description": "TyranoScript や TyranoBuilder のプロジェクト（.ks）を本文照合つきで取り込み、Liminalia 側の修正を .ks へ書き戻します。",
-      "descriptionEn": "Imports TyranoScript / TyranoBuilder (.ks) projects with word-for-word verification and backports edits to .ks.",
+      "id": "tyrano-backport",
+      "name": "TyranoScript への書き戻し",
+      "nameEn": "TyranoScript Backport",
+      "description": "Liminalia 側で編集した .lim の変更を、元の TyranoScript（.ks）プロジェクトへ書き戻します（取り込み自体は本体に標準搭載）。",
+      "descriptionEn": "Backports edits made in Liminalia (.lim) back into an original TyranoScript (.ks) project (importing is built in).",
       "category": "import",
       "scope": "tool",
-      "tags": ["TyranoScript", "TyranoBuilder", "ティラノ", "ks", "移行", "インポート", "書き戻し", "migrate", "backport"],
-      "commands": ["lim import", "lim backport", "lim new --from-tyrano"]
-    },
-    {
-      "id": "story-import",
-      "name": "他ツールシナリオ取り込み",
-      "nameEn": "Ink, Yarn, Ren'Py and Twine Import",
-      "description": "Ink（.ink）、Yarn Spinner（.yarn）、Ren'Py（.rpy）、Twine（.twee）のシナリオを .lim 形式へ変換して取り込みます。",
-      "descriptionEn": "Converts and imports Ink (.ink), Yarn Spinner (.yarn), Ren'Py (.rpy), and Twine (.twee) scripts into .lim.",
-      "category": "import",
-      "scope": "tool",
-      "tags": ["Ink", "Yarn", "Ren'Py", "Twine", "twee", "rpy", "移行", "インポート", "変換", "import"],
-      "commands": ["lim import-ink", "lim import-yarn", "lim import-renpy", "lim import-twine"]
+      "tags": ["TyranoScript", "TyranoBuilder", "ティラノ", "ks", "書き戻し", "差分反映", "backport"],
+      "commands": ["lim backport"]
     },
     {
       "id": "psd-import",

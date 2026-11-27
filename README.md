@@ -26,8 +26,7 @@
 | [多言語翻訳ツールキット](plugins/i18n-toolkit) | 制作画面 | 翻訳タブ、プレビュー言語切替、`lim i18n` |
 | [変数・ブレークポイントデバッガ](plugins/debug-tools) | 制作画面 | 変数一覧、ブレークポイント、ステップ実行 |
 | [外出先から接続](plugins/remote-connect) | 制作画面 | Cloudflare Access 経由で Studio に接続 |
-| [TyranoScript 移行・書き戻し](plugins/tyrano-import) | インポート | `lim import`、`lim backport`、`lim new --from-tyrano` |
-| [他ツールシナリオ取り込み](plugins/story-import) | インポート | `lim import-ink`、`import-yarn`、`import-renpy`、`import-twine` |
+| [TyranoScript への書き戻し](plugins/tyrano-backport) | インポート | `lim backport`（.lim の修正を .ks へ書き戻し） |
 | [PSD 立ち絵パーツ取り込み](plugins/psd-import) | インポート | `lim psd`（PSD/PSB レイヤーからの立ち絵差分生成） |
 | [CI 自動テスト・クラッシュ解析](plugins/ci-testing) | 配信 | `lim test`、`lim reach`、`lim playtest`、`lim crash` |
 | [Steam・itch.io 配信とパッチ](plugins/publish-stores) | 配信 | `lim publish`、`lim pack`、`lim patch`、`lim update-manifest` |

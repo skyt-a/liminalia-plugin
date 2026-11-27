@@ -1,0 +1,17 @@
+{
+  "name": "liminalia-tyrano-backport",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Liminalia 側で編集した .lim の変更を TyranoScript（.ks）へ書き戻す（lim backport）公式プラグイン。",
+  "license": "SEE LICENSE IN LICENSE",
+  "liminalia": {
+    "api": 8,
+    "enables": [
+      "cli:backport"
+    ]
+  },
+  "exports": {
+    "./cli": "./src/cli.ts"
+  }
+}

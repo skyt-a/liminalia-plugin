@@ -22,7 +22,7 @@ const VALID_SCOPES = new Set(["project", "tool"]);
 
 describe("公式プラグインカタログ", () => {
   it("すべてのエントリに検索用メタデータと実体パッケージが揃っている", () => {
-    expect(catalog.plugins.length).toBeGreaterThanOrEqual(21);
+    expect(catalog.plugins.length).toBeGreaterThanOrEqual(20);
     const ids = new Set<string>();
     for (const entry of catalog.plugins) {
       expect(ids.has(entry.id), `duplicate id: ${entry.id}`).toBe(false);
